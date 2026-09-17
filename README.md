@@ -1,58 +1,40 @@
-# CapiSolutions — Site Institucional
+# CapiSolutions — nova experiência digital
 
-Site institucional da **CapiSolutions**, empresa de tecnologia focada em soluções com propósito. Desenvolvido com design minimalista inspirado na estética Apple.
+Fundação da nova CapiSolutions em Next.js, criada na Sprint 03 após a aprovação dos Gates 04, 05 e 06.
 
-🌐 **[capisolutions.com](https://www.capisolutions.com)**
+## Stack
 
----
+- Next.js 16 com App Router;
+- React 19 e TypeScript;
+- Tailwind CSS 4 no pipeline de build;
+- ESLint;
+- Sanity e Vercel planejados para os próximos blocos.
 
-## 🚀 Tecnologias Utilizadas
+## Executar localmente
 
-| Tecnologia | Descrição |
-|---|---|
-| ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) | Estrutura e marcação das páginas |
-| ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) | Estilização via CDN (utility-first CSS) |
-| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) | Interatividade e animações |
-| ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white) | Envio de formulário de contato |
-
----
-
-## 📁 Estrutura do Projeto
-
-```
-site-capisolutions/
-├── index.html          # Página principal
-├── send_mail.php       # Backend para envio de e-mail via formulário
-├── README.md
-└── assets/
-    └── images/         # Imagens e avatares do site
-        ├── logo.png
-        ├── avatar-waving.png
-        ├── avatar-thinking.png
-        └── avatar-pointing.png
+```bash
+pnpm install
+pnpm dev
 ```
 
----
+Abra `http://localhost:3000`.
 
-## 💻 Como Rodar Localmente
+## Verificações
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/ofernandomaciel/capisolutions-site.git
-   ```
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+```
 
-2. Acesse a pasta do projeto:
-   ```bash
-   cd capisolutions-site
-   ```
+Ou execute tudo com `pnpm check`.
 
-3. Abra o arquivo `index.html` no seu navegador — ou use uma extensão como **Live Server** no VS Code para um servidor local.
+## Estado atual
 
-> **Nota:** O `send_mail.php` requer um servidor com PHP para funcionar (ex: XAMPP, WAMP ou hospedagem web).
+- fundação visual e rotas institucionais;
+- Home responsiva;
+- Newsroom em estado editorial inicial;
+- Nexo apenas como demonstração local, sem API e sem armazenamento;
+- nenhuma integração externa ou publicação de produção.
 
----
-
-## ✉️ Contato
-
-Tem alguma dúvida ou quer trabalhar com a gente?  
-Acesse [capisolutions.com](https://www.capisolutions.com) e entre em contato.
+O site anterior foi preservado em `legacy/` e também pela tag Git `legacy-2026-09-10`.
