@@ -1,101 +1,104 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ChevronRight, SparkIcon } from "@/components/icons";
-import { NexoPreview } from "@/components/nexo-preview";
-import { SectionHeading } from "@/components/section-heading";
+import { ArrowUpRight, ChevronRight } from "@/components/icons";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { offers, solutionFronts } from "@/content/site";
+
+const technologyCards = [
+  ["01", "Soluções com IA", "Aplicações práticas de inteligência artificial para automatizar, analisar e criar novas oportunidades.", "✺"],
+  ["02", "Automação de Processos", "Menos trabalho manual, mais eficiência e foco no que importa.", "⚙"],
+  ["03", "Análise de Dados", "Dados que revelam oportunidades e orientam decisões mais seguras.", "↗"],
+  ["04", "Engenharia de Dados", "Bases sólidas para escalar soluções e sustentar o futuro.", "▱"],
+] as const;
+
+const newsroomCards = [
+  ["ANÁLISE", "O que realmente muda com a IA generativa", "12 jan 2026"],
+  ["ENTREVISTA", "Thanássius Veloso: tecnologia, conteúdo e o futuro", "08 jan 2026"],
+  ["CARREIRA", "Transição de carreira: por onde começar?", "05 jan 2026"],
+] as const;
 
 export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main>
-        <section className="hero" id="inicio">
-          <div className="hero__glow hero__glow--coral" />
-          <div className="hero__glow hero__glow--cyan" />
-          <div className="shell hero__inner">
-            <div className="eyebrow reveal reveal--1"><span className="eyebrow__dot" />Tecnologia · Dados · Comunicação</div>
-            <h1 className="display display--hero reveal reveal--2">Ideias complexas.<span>Soluções que fazem sentido.</span></h1>
-            <p className="hero__lead reveal reveal--3">Eu conecto tecnologia, comunicação e conteúdo para transformar problemas reais em experiências claras, confiáveis e humanas.</p>
-            <div className="hero__actions reveal reveal--4">
-              <Link className="button button--primary" href="#nexo">Conte seu contexto <ArrowUpRight /></Link>
-              <Link className="button button--ghost" href="#solucoes">Conhecer as soluções <ChevronRight /></Link>
+      <main className="approved-home">
+        <section className="approved-hero" id="inicio">
+          <div className="shell approved-hero__grid">
+            <div className="approved-hero__copy">
+              <p className="approved-kicker"><span>Tecnologia</span> com propósito</p>
+              <h1>Ideias reais.<br /><span>Soluções que</span><br /><em>funcionam.</em></h1>
+              <p className="approved-hero__lead">Tecnologia, comunicação e conteúdo para transformar complexidade em resultados claros, confiáveis e humanos.</p>
+              <div className="approved-actions">
+                <Link className="approved-button approved-button--coral" href="#solucoes">Conheça as soluções <ArrowUpRight /></Link>
+                <Link className="approved-button approved-button--cyan" href="#nexo">Fale com o Nexo</Link>
+              </div>
             </div>
-            <div className="hero__index reveal reveal--4" aria-label="Áreas principais">
-              <span>01 IA & Automação</span><span>02 Dados</span><span>03 Conteúdo</span><span>04 Comunicação</span>
+            <div className="approved-hero__portrait" aria-hidden="true">
+              <Image src="/images/fernando-hero-approved.png" alt="" fill priority sizes="(max-width: 760px) 56vw, 45vw" />
+              <blockquote>“Transformar complexidade em soluções possíveis é o que me move.”<cite>— Fernando Maciel</cite></blockquote>
+              <p className="approved-hero__stack"><span />Tecnologia<br />Conteúdo<br />Comunicação<br />Pessoas</p>
             </div>
           </div>
         </section>
 
-        <section className="section section--ink" id="solucoes">
+        <section className="approved-section approved-section--paper" id="solucoes">
           <div className="shell">
-            <SectionHeading index="01" kicker="Tecnologia & Produto" title="Tecnologia útil começa pelo problema — não pela ferramenta." description="Eu conecto IA, automação e dados para melhorar produtos, decisões e processos. Quando o projeto pede, entram também QA, UI/UX e desenvolvimento." tone="dark" />
-            <div className="offer-grid">
-              {offers.map((offer, index) => (
-                <article className={`offer-card ${index === 0 ? "offer-card--featured" : ""}`} key={offer.slug}>
-                  <div className="offer-card__topline"><span>{String(index + 1).padStart(2, "0")}</span><SparkIcon /></div>
-                  <h3>{offer.title}</h3><p>{offer.description}</p>
-                  <Link href={`/solucoes#${offer.slug}`}>{offer.cta} <ArrowUpRight /></Link>
+            <div className="approved-section-title">
+              <span className="approved-number">01</span>
+              <div><p>Tecnologia &amp; Produto</p><h2>Da ideia à implementação.<br />Soluções que geram valor real.</h2></div>
+              <p className="approved-section-title__support">Inteligência, automação, dados e arquitetura para resolver problemas de forma prática, eficiente e escalável.</p>
+            </div>
+            <div className="technology-grid">
+              {technologyCards.map(([number, title, description, icon], index) => (
+                <article className={`technology-card technology-card--${index + 1}`} key={title}>
+                  <div className="technology-card__top"><span>{number}</span><b>{icon}</b></div>
+                  <div><h3>{title}</h3><p>{description}</p><Link href="/solucoes">Saiba mais <ArrowUpRight /></Link></div>
                 </article>
               ))}
             </div>
-            <Link className="text-link text-link--light" href="/solucoes">Explorar todas as soluções <ArrowUpRight /></Link>
+
+            <div className="approved-section-title approved-section-title--compact">
+              <span className="approved-number">02</span>
+              <div><p>Outras formas de transformar complexidade</p></div>
+            </div>
+            <div className="secondary-grid">
+              <article><span className="secondary-grid__icon">▣</span><div><h3>Conteúdo &amp; Conhecimento</h3><p>Artigos, análises, entrevistas e conteúdos para aprender, compartilhar e construir juntos.</p><Link href="/solucoes#conteudo-conhecimento">Saiba mais <ArrowUpRight /></Link></div></article>
+              <article><span className="secondary-grid__icon">▢</span><div><h3>Linguagem &amp; Comunicação</h3><p>Tradução, interpretação e comunicação clara para conectar pessoas e oportunidades.</p><Link href="/solucoes#linguagem-comunicacao">Saiba mais <ArrowUpRight /></Link></div></article>
+            </div>
           </div>
         </section>
 
-        <section className="section section--paper">
+        <section className="approved-section approved-section--paper newsroom-strip" id="conteudo">
           <div className="shell">
-            <SectionHeading index="02" kicker="Outras frentes" title="A tecnologia encontra a linguagem." description="Nem todo desafio começa no código. Às vezes, o trabalho é tornar uma ideia compreensível, memorável e capaz de atravessar contextos." />
-            <div className="front-grid">
-              {solutionFronts.slice(1).map((front, index) => (
-                <article className="front-card" key={front.slug}>
-                  <span className="front-card__index">0{index + 2}</span><p className="front-card__label">{front.label}</p>
-                  <h3>{front.title}</h3><p>{front.description}</p>
-                  <ul>{front.items.map((item) => <li key={item}>{item}</li>)}</ul>
-                  <Link href={`/solucoes#${front.slug}`}>Explorar esta frente <ArrowUpRight /></Link>
-                </article>
-              ))}
+            <div className="approved-section-title newsroom-heading">
+              <span className="approved-number">03</span>
+              <div><p>Capi Newsroom</p><h2>Histórias, ideias e conversas oportunas.</h2><span>Tecnologia, IA, dados e as pessoas que estão construindo esse futuro.</span></div>
+              <Link href="/newsroom">Ver todas as publicações <ArrowUpRight /></Link>
+            </div>
+            <div className="newsroom-cards">
+              {newsroomCards.map(([type, title, date], index) => <article key={title}><div className={`newsroom-card__visual newsroom-card__visual--${index + 1}`} /><p>{type}</p><h3>{title}</h3><time>{date}</time></article>)}
+              <aside><b>◉</b><h3>Radar</h3><p>As principais notícias da semana, duas vezes por semana.</p><Link href="/newsroom">Ver o último radar <ChevronRight /></Link></aside>
             </div>
           </div>
         </section>
 
-        <section className="section section--newsroom" id="conteudo">
-          <div className="shell">
-            <div className="newsroom-brand"><span>Capi</span><strong>Newsroom</strong><span className="newsroom-brand__edition">Edição 00 · Em preparação</span></div>
-            <div className="newsroom-layout">
-              <article className="newsroom-feature">
-                <p className="newsroom-meta">ANÁLISE · AUTOMAÇÃO</p><h2>Nem todo processo precisa de IA.</h2>
-                <p>As primeiras publicações estão em preparação. A estreia parte de uma pergunta prática: quando automatizar e quando a inteligência artificial realmente acrescenta valor?</p>
-                <span className="newsroom-status">Conteúdo em produção</span>
-              </article>
-              <aside className="newsroom-manifesto">
-                <p className="eyebrow eyebrow--dark">Tecnologia sem ruído</p><h3>O futuro da tecnologia não chega com manual de instruções.</h3>
-                <p>Na Capi Newsroom, eu acompanho o que muda em IA, dados e carreira, separo sinal de ruído e converso com quem está construindo esse futuro.</p>
-                <Link className="button button--ink" href="/newsroom">Entrar na Newsroom <ArrowUpRight /></Link>
-              </aside>
+        <section className="approved-section approved-section--paper about-strip" id="sobre">
+          <div className="shell about-strip__grid">
+            <div className="approved-section-title">
+              <span className="approved-number">04</span>
+              <div><p>Sobre</p><h2>Uma trajetória multidisciplinar com propósito.</h2><p className="about-strip__text">Sou Fernando Maciel. Atuo na interseção entre tecnologia, comunicação e conteúdo. Hoje, estou em transição para Engenharia de Dados e IA, sempre com o mesmo objetivo: transformar complexidade em soluções claras e humanas.</p><Link href="/sobre">Conheça minha história <ArrowUpRight /></Link></div>
             </div>
+            <Image src="/images/fernando-hero-approved.png" alt="Fernando Maciel" width={900} height={900} sizes="240px" />
+            <blockquote>“Tecnologia só faz sentido quando aproxima pessoas.”</blockquote>
           </div>
         </section>
 
-        <section className="section section--about" id="sobre">
-          <div className="shell about-grid">
-            <div className="about-image-wrap">
-              <span className="about-image-wrap__caption">Fernando Maciel · CapiSolutions</span>
-              <Image className="about-image" src="/images/fernando.jpeg" alt="Fernando Maciel" width={1199} height={1600} sizes="(max-width: 760px) 92vw, 42vw" />
-            </div>
-            <div className="about-copy">
-              <SectionHeading index="03" kicker="Sobre" title="Tecnologia, conteúdo e comunicação — conectados por uma mesma curiosidade." description="A CapiSolutions reúne essas frentes em um só lugar. É onde apresento meu trabalho e compartilho o que acompanho e aprendo sobre tecnologia, dados e comunicação." tone="dark" />
-              <Link className="text-link text-link--light" href="/sobre">Conhecer a trajetória <ArrowUpRight /></Link>
-            </div>
-          </div>
-        </section>
-
-        <section className="section section--nexo" id="nexo">
-          <div className="shell">
-            <SectionHeading index="04" kicker="Nexo · Assistente virtual" title="Conte o que você quer construir, melhorar ou destravar." description="O Nexo ajuda a organizar sua necessidade e a encontrar o próximo passo. Nesta fundação, a experiência é apenas demonstrativa e não envia dados." />
-            <NexoPreview />
+        <section className="nexo-band" id="nexo">
+          <div className="shell nexo-band__grid">
+            <span className="approved-number">05</span>
+            <div><p>Vamos conversar?</p><h2>Conte ao Nexo o que você precisa.</h2><span>O Nexo entende sua demanda, organiza um resumo e encaminha pelos canais disponíveis.</span></div>
+            <Link className="approved-button approved-button--coral" href="/contato">Falar com o Nexo <ArrowUpRight /></Link>
+            <div className="nexo-band__character"><Image src="/images/nexo-approved.png" alt="Nexo, a capivara robô da CapiSolutions" fill sizes="340px" /><b>Oi!<br />Eu sou<br />o Nexo!</b></div>
           </div>
         </section>
       </main>

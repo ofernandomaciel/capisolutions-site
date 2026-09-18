@@ -7,9 +7,11 @@ export function PageShell({ kicker, title, description, children }: { kicker: st
       <SiteHeader />
       <main>
         <header className="page-hero">
-          <div className="shell">
-            <p className="eyebrow">{kicker}</p>
-            <h1>{title}</h1>
+          <div className="shell page-hero__grid">
+            <div>
+              <p className="eyebrow">{kicker}</p>
+              <h1>{title}</h1>
+            </div>
             <p>{description}</p>
           </div>
         </header>
