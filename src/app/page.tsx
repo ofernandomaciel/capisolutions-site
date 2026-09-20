@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ChevronRight } from "@/components/icons";
+import { ArrowUpRight } from "@/components/icons";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -9,12 +9,6 @@ const technologyCards = [
   ["02", "Automação de Processos", "Menos trabalho manual, mais eficiência e foco no que importa.", "⚙"],
   ["03", "Análise de Dados", "Dados que revelam oportunidades e orientam decisões mais seguras.", "↗"],
   ["04", "Engenharia de Dados", "Bases sólidas para escalar soluções e sustentar o futuro.", "▱"],
-] as const;
-
-const newsroomCards = [
-  ["ANÁLISE", "O que realmente muda com a IA generativa", "12 jan 2026"],
-  ["ENTREVISTA", "Thanássius Veloso: tecnologia, conteúdo e o futuro", "08 jan 2026"],
-  ["CARREIRA", "Transição de carreira: por onde começar?", "05 jan 2026"],
 ] as const;
 
 export default function Home() {
@@ -73,11 +67,12 @@ export default function Home() {
             <div className="approved-section-title newsroom-heading">
               <span className="approved-number">03</span>
               <div><p>Capi Newsroom</p><h2>Histórias, ideias e conversas oportunas.</h2><span>Tecnologia, IA, dados e as pessoas que estão construindo esse futuro.</span></div>
-              <Link href="/newsroom">Ver todas as publicações <ArrowUpRight /></Link>
+              <Link href="/newsroom">Conhecer a Newsroom <ArrowUpRight /></Link>
             </div>
-            <div className="newsroom-cards">
-              {newsroomCards.map(([type, title, date], index) => <article key={title}><div className={`newsroom-card__visual newsroom-card__visual--${index + 1}`} /><p>{type}</p><h3>{title}</h3><time>{date}</time></article>)}
-              <aside><b>◉</b><h3>Radar</h3><p>As principais notícias da semana, duas vezes por semana.</p><Link href="/newsroom">Ver o último radar <ChevronRight /></Link></aside>
+            <div className="newsroom-empty-state">
+              <span>00</span>
+              <div><p>Edição de lançamento</p><h3>As primeiras publicações estão em preparação.</h3><p>Artigos, entrevistas e curadorias serão apresentados somente depois da revisão editorial.</p></div>
+              <Link href="/newsroom">Ver a estrutura editorial <ArrowUpRight /></Link>
             </div>
           </div>
         </section>

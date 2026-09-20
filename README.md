@@ -38,3 +38,7 @@ Ou execute tudo com `pnpm check`.
 - nenhuma integração externa ou publicação de produção.
 
 O site anterior foi preservado em `legacy/` e também pela tag Git `legacy-2026-09-10`.
+
+## Documentação e decisões
+
+Os Gates, registros das sprints, referências visuais e auditorias estão versionados em [`docs/`](docs/README.md). Essa pasta é a fonte canônica do projeto; cópias externas e caches são apenas referências de origem.
