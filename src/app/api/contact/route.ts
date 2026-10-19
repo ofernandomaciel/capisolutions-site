@@ -100,10 +100,11 @@ export async function POST(request: Request) {
   const smtpPort = Number(process.env.SMTP_PORT || 465);
   const smtpUser = process.env.SMTP_USER;
   const smtpPass = process.env.SMTP_PASS;
+  const smtpAuthRequired = process.env.SMTP_AUTH !== "false";
   const to = process.env.CONTACT_TO_EMAIL || "contato@capisolutions.com";
   const from = process.env.CONTACT_FROM_EMAIL || smtpUser;
 
-  if (!smtpHost || !smtpUser || !smtpPass || !from) {
+  if (!smtpHost || !from || (smtpAuthRequired && (!smtpUser || !smtpPass))) {
     return NextResponse.json({ message: "O envio está temporariamente indisponível. Tente novamente mais tarde." }, { status: 503 });
   }
 
@@ -111,7 +112,7 @@ export async function POST(request: Request) {
     host: smtpHost,
     port: smtpPort,
     secure: process.env.SMTP_SECURE !== "false",
-    auth: { user: smtpUser, pass: smtpPass },
+    auth: smtpAuthRequired ? { user: smtpUser, pass: smtpPass } : undefined,
   });
 
   try {

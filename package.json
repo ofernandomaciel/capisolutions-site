@@ -9,6 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test:smoke": "node scripts/smoke.mjs",
+    "test:email:docker": "node scripts/test-email-docker.mjs",
     "check": "pnpm lint && pnpm typecheck && pnpm build && pnpm test:smoke"
   },
   "dependencies": {

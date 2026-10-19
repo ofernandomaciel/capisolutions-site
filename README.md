@@ -44,11 +44,30 @@ Copie `.env.example` para `.env.local` e configure as credenciais SMTP. O formul
 
 Variáveis necessárias:
 
-- `SMTP_HOST`, `SMTP_PORT` e `SMTP_SECURE`;
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` e `SMTP_AUTH`;
 - `SMTP_USER` e `SMTP_PASS`;
 - `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL`.
 
 Credenciais nunca devem ser versionadas ou expostas ao navegador.
+
+## Teste local com Docker
+
+O ambiente Docker executa o site e o Mailpit, que captura e-mails localmente sem entregá-los a destinatários externos:
+
+```bash
+docker compose up --build
+```
+
+- site: `http://localhost:3000`;
+- caixa de e-mail local: `http://localhost:8025`.
+
+Com os containers em execução, valide o envio completo com:
+
+```bash
+pnpm test:email:docker
+```
+
+O arquivo `compose.yaml` desativa autenticação apenas na rede Docker local. Em preview e produção, mantenha `SMTP_AUTH=true` e use uma credencial exclusiva configurada no ambiente de hospedagem.
 
 O site anterior foi preservado em `legacy/` e também pela tag Git `legacy-2026-09-10`.
 

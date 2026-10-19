@@ -21,6 +21,10 @@
 - [x] atualizar Next.js para `16.3.8` e alinhar `eslint-config-next`;
 - [x] fixar versões corrigidas de `sharp` e `source-map-js`;
 - [x] confirmar com `pnpm audit --prod` que não há vulnerabilidades conhecidas nas dependências de produção em 19/10/2026.
+- [x] criar imagem Docker de produção com execução como usuário sem privilégios;
+- [x] criar ambiente local com site e Mailpit, sem entrega externa de e-mail;
+- [x] validar o envio completo do endpoint até a caixa SMTP local;
+- [x] adicionar teste repetível `pnpm test:email:docker`.
 
 ## Necessário para ativar o envio real
 
