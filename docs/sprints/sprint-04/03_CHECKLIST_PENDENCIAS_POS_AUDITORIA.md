@@ -5,6 +5,8 @@
 **Commit auditado e publicado:** `1c90651`  
 **Objetivo:** separar o que já foi resolvido, o que bloqueia o go-live institucional e o que pertence às fases posteriores.
 
+> **Decisão posterior — 19/10/2026:** o chat do Nexo foi retirado do escopo. O Nexo permanece como personagem principal da identidade e o contato passa a usar formulário com envio por e-mail. Para o estado vigente, consultar `04_DECISAO_NEXO_E_FORMULARIO_EMAIL.md` e `05_CHECKLIST_FORMULARIO_E_GO_LIVE.md`.
+
 ## Legenda
 
 - `[x]` concluído e verificado;

@@ -223,14 +223,28 @@ img { max-width: 100%; }
 .timeline-section div > p { color: #555; font-size: .8rem; line-height: 1.55; }
 
 .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.contact-options { display: grid; gap: 8px; }
-.contact-options > a { min-height: 220px; padding: 1.5rem; display: grid; grid-template-columns: 50px 1fr auto; align-content: center; color: white; background: #171717; }
-.contact-options > a:nth-child(2) { background: #242424; }
-.contact-options > a > span { grid-row: 1 / 4; color: var(--coral); font-family: var(--display); font-size: 1.5rem; }
-.contact-options > a > p { margin: 0; color: var(--cyan); font-size: .66rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-.contact-options h2 { margin: .5rem 0; font-family: var(--display); font-size: 1.6rem; }
-.contact-options small { color: #aaa; line-height: 1.5; }
-.contact-options svg { width: 22px; grid-column: 3; grid-row: 1 / 4; align-self: center; color: var(--cyan); }
+.contact-form { padding: 2rem; color: white; background: #171717; }
+.contact-form__heading { margin-bottom: 2rem; }
+.contact-form__heading h2 { margin: .8rem 0; font-family: var(--display); font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1; }
+.contact-form__heading > p:last-child { color: #aaa; font-size: .76rem; }
+.contact-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.contact-form > label, .contact-form__grid label { display: grid; gap: .5rem; margin-bottom: 1rem; }
+.contact-form label > span { color: #ddd; font-size: .72rem; font-weight: 800; }
+.contact-form input, .contact-form textarea { width: 100%; border: 1px solid #555; border-radius: 3px; padding: .85rem .95rem; color: white; background: #0d0d0d; }
+.contact-form input:hover, .contact-form textarea:hover { border-color: #888; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--cyan); outline: 2px solid color-mix(in srgb, var(--cyan) 32%, transparent); outline-offset: 1px; }
+.contact-form textarea { resize: vertical; min-height: 160px; }
+.contact-form__honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.contact-form__consent { grid-template-columns: 20px 1fr; align-items: start; gap: .7rem !important; }
+.contact-form__consent input { width: 18px; height: 18px; margin: .15rem 0 0; accent-color: var(--coral); }
+.contact-form__consent span { font-weight: 400 !important; line-height: 1.55; }
+.contact-form__consent a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; }
+.contact-form__actions { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 1rem; margin-top: 1.5rem; }
+.contact-form button { min-height: 46px; border: 0; border-radius: 7px; padding: 0 1.25rem; color: var(--black); background: var(--coral); font-size: .78rem; font-weight: 900; cursor: pointer; }
+.contact-form button:disabled { opacity: .65; cursor: wait; }
+.contact-form__feedback { min-height: 1.4em; margin: 0; color: #bbb; font-size: .76rem; line-height: 1.45; }
+.contact-form__feedback--success { color: var(--cyan); }
+.contact-form__feedback--error { color: #ff9d90; }
 .contact-nexo { min-height: 448px; padding: 2rem; position: relative; overflow: hidden; color: white; background: linear-gradient(135deg, #111, #183033); }
 .contact-nexo > div { max-width: 58%; position: relative; z-index: 2; }
 .contact-nexo h2 { margin: 1rem 0; font-family: var(--display); font-size: 2rem; line-height: 1; }
@@ -373,8 +387,10 @@ img { max-width: 100%; }
   .about-story__copy h2 { font-size: 2.4rem; }
   .timeline-section { grid-template-columns: 1fr; margin: 3rem 0; }
   .timeline-section > div, .timeline-section > div:last-child { min-height: 175px; border-right: 1px solid #bbb; }
-  .contact-options > a { min-height: 200px; grid-template-columns: 42px 1fr auto; }
-  .contact-options h2 { font-size: 1.25rem; overflow-wrap: anywhere; }
+  .contact-form { padding: 1.4rem; }
+  .contact-form__grid { grid-template-columns: 1fr; gap: 0; }
+  .contact-form__actions { grid-template-columns: 1fr; }
+  .contact-form button { width: 100%; }
   .contact-nexo { min-height: 460px; padding: 1.5rem; }
   .contact-nexo > div { max-width: 78%; }
   .contact-nexo img { width: 280px; right: -70px; }

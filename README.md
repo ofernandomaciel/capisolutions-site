@@ -34,8 +34,21 @@ Ou execute tudo com `pnpm check`.
 - fundação visual e rotas institucionais;
 - Home responsiva;
 - Newsroom em estado editorial inicial;
-- Nexo apenas como demonstração local, sem API e sem armazenamento;
+- Nexo como personagem principal da identidade, sem chat, API ou armazenamento;
+- formulário de contato com envio SMTP pelo servidor;
 - nenhuma integração externa ou publicação de produção.
+
+## Formulário de contato
+
+Copie `.env.example` para `.env.local` e configure as credenciais SMTP. O formulário permanece visível sem essas variáveis, mas o servidor responde com indisponibilidade temporária e não tenta enviar mensagens.
+
+Variáveis necessárias:
+
+- `SMTP_HOST`, `SMTP_PORT` e `SMTP_SECURE`;
+- `SMTP_USER` e `SMTP_PASS`;
+- `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL`.
+
+Credenciais nunca devem ser versionadas ou expostas ao navegador.
 
 O site anterior foi preservado em `legacy/` e também pela tag Git `legacy-2026-09-10`.
 

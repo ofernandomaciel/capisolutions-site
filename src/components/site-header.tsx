@@ -10,14 +10,14 @@ export function SiteHeader() {
         <Link className="brand-word" href="/" aria-label="CapiSolutions — Início"><span>Capi</span>Solutions</Link>
         <nav className="site-nav" aria-label="Navegação principal">
           {nav.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
-          <Link className="site-nav__cta" href="/#nexo">Fale com o Nexo <ArrowUpRight /></Link>
+          <Link className="site-nav__cta" href="/contato">Entre em contato <ArrowUpRight /></Link>
         </nav>
         <details className="mobile-nav">
           <summary aria-label="Abrir menu"><span className="mobile-menu-icon" aria-hidden="true">☰</span></summary>
           <nav className="mobile-nav__panel" aria-label="Navegação móvel">
             <Link href="/">Início</Link>
             {nav.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
-            <Link href="/#nexo">Fale com o Nexo</Link>
+            <Link href="/contato">Entre em contato</Link>
           </nav>
         </details>
       </div>

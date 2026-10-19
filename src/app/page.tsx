@@ -24,7 +24,7 @@ export default function Home() {
               <p className="approved-hero__lead">Tecnologia, comunicação e conteúdo para transformar complexidade em resultados claros, confiáveis e humanos.</p>
               <div className="approved-actions">
                 <Link className="approved-button approved-button--coral" href="#solucoes">Conheça as soluções <ArrowUpRight /></Link>
-                <Link className="approved-button approved-button--cyan" href="#nexo">Fale com o Nexo</Link>
+                <Link className="approved-button approved-button--cyan" href="#nexo">Conheça o Nexo</Link>
               </div>
             </div>
             <div className="approved-hero__portrait" aria-hidden="true">
@@ -91,8 +91,8 @@ export default function Home() {
         <section className="nexo-band" id="nexo">
           <div className="shell nexo-band__grid">
             <span className="approved-number">05</span>
-            <div><p>Vamos conversar?</p><h2>Conte ao Nexo o que você precisa.</h2><span>O Nexo entende sua demanda, organiza um resumo e encaminha pelos canais disponíveis.</span></div>
-            <Link className="approved-button approved-button--coral" href="/contato">Falar com o Nexo <ArrowUpRight /></Link>
+            <div><p>Personagem da CapiSolutions</p><h2>O Nexo ajuda a tornar a tecnologia mais próxima.</h2><span>Ele acompanha a experiência do site e representa uma tecnologia clara, curiosa e humana — sem chat e sem coletar suas mensagens.</span></div>
+            <Link className="approved-button approved-button--coral" href="/contato">Conte sobre seu projeto <ArrowUpRight /></Link>
             <div className="nexo-band__character"><Image src="/images/nexo-approved.png" alt="Nexo, a capivara robô da CapiSolutions" fill sizes="340px" /><b>Oi!<br />Eu sou<br />o Nexo!</b></div>
           </div>
         </section>

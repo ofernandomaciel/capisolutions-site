@@ -62,6 +62,9 @@ try {
     "Thanássius Veloso",
     "Transição de carreira: por onde começar?",
     "duas vezes por semana",
+    "Fale com o Nexo",
+    "O Nexo entende sua demanda",
+    "assistente virtual da CapiSolutions",
   ];
   for (const copy of forbiddenCopy) {
     if (home.includes(copy)) throw new Error(`Home still contains unapproved copy: ${copy}`);
@@ -79,7 +82,40 @@ try {
     }
   }
 
-  console.log(`Smoke test passed for ${publicRoutes.length} public routes and the 404 state.`);
+  const contact = await expectStatus("/contato");
+  if (!contact.includes("Formulário de contato")) throw new Error("Contact page is missing the email form");
+
+  const invalidContact = await fetch(`${baseUrl}/api/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name: "A", email: "invalid", subject: "Oi", message: "curta" }),
+  });
+  if (invalidContact.status !== 400) throw new Error(`Invalid contact payload returned ${invalidContact.status}; expected 400`);
+
+  const honeypotContact = await fetch(`${baseUrl}/api/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ website: "https://spam.example" }),
+  });
+  if (honeypotContact.status !== 201) throw new Error(`Honeypot contact returned ${honeypotContact.status}; expected 201`);
+
+  const unconfiguredContact = await fetch(`${baseUrl}/api/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: "Pessoa de Teste",
+      email: "teste@example.com",
+      subject: "Projeto de teste",
+      message: "Esta mensagem válida confirma o comportamento sem credenciais SMTP.",
+      consent: "accepted",
+    }),
+  });
+  if (unconfiguredContact.status !== 503) throw new Error(`Unconfigured contact returned ${unconfiguredContact.status}; expected 503`);
+
+  const headers = await fetch(baseUrl);
+  if (headers.headers.get("x-content-type-options") !== "nosniff") throw new Error("Security headers are missing");
+
+  console.log(`Smoke test passed for ${publicRoutes.length} public routes, contact validation, security headers and the 404 state.`);
 } finally {
   server.kill("SIGTERM");
 }
