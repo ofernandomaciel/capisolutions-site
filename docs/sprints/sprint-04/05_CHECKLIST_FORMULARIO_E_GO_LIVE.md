@@ -65,7 +65,7 @@
 ## Entrega e go-live
 
 - [x] publicar a branch `codex/sprint-04-nexo-formulario` no GitHub;
-- [ ] confirmar todos os checks automáticos da branch em verde;
+- [x] confirmar todos os checks automáticos da branch em verde;
 - [x] abrir o PR #1 para `main`, sem realizar merge;
 - [x] criar preview privado na Vercel, protegido por autenticação e sem substituir o legado;
 - [x] executar teste real de envio no preview e receber a resposta `Mensagem enviada`;
