@@ -28,12 +28,13 @@
 
 ## Necessário para ativar o envio real
 
-- [ ] confirmar a caixa de destino `contato@capisolutions.com`;
-- [ ] escolher e confirmar o provedor SMTP de produção;
-- [ ] criar uma credencial exclusiva ou senha de aplicativo para o site;
-- [ ] configurar `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER` e `SMTP_PASS` no ambiente de preview/produção;
-- [ ] configurar e confirmar `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL`;
-- [ ] validar SPF, DKIM e DMARC do domínio remetente;
+- [x] confirmar a caixa de destino `contato@capisolutions.com`;
+- [x] escolher e confirmar o provedor SMTP de produção: Hostinger;
+- [x] confirmar remetente e destino: `contato@capisolutions.com`;
+- [x] verificar MX, SPF, DKIM e DMARC ativos no domínio;
+- [ ] obter ou redefinir a senha da caixa para autenticação SMTP, sem registrá-la no repositório;
+- [ ] configurar as variáveis SMTP no ambiente de preview/produção; host, porta, segurança e usuário já estão definidos, faltando cadastrar `SMTP_PASS` como segredo;
+- [x] definir `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL` no exemplo de configuração;
 - [ ] testar entrega em Gmail, Outlook e no próprio domínio;
 - [ ] testar resposta ao remetente pelo cabeçalho `Reply-To`;
 - [ ] decidir prazo de retenção e rotina de exclusão das mensagens;

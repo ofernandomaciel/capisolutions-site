@@ -40,12 +40,12 @@ Ou execute tudo com `pnpm check`.
 
 ## Formulário de contato
 
-Copie `.env.example` para `.env.local` e configure as credenciais SMTP. O formulário permanece visível sem essas variáveis, mas o servidor responde com indisponibilidade temporária e não tenta enviar mensagens.
+Copie `.env.example` para `.env.local` e configure a senha SMTP da caixa `contato@capisolutions.com`. O projeto já usa o servidor oficial da Hostinger (`smtp.hostinger.com`, porta `465`, SSL/TLS). O formulário permanece visível sem a senha, mas o servidor responde com indisponibilidade temporária e não tenta enviar mensagens.
 
 Variáveis necessárias:
 
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` e `SMTP_AUTH`;
-- `SMTP_USER` e `SMTP_PASS`;
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` e `SMTP_AUTH` (preenchidos para a Hostinger no exemplo);
+- `SMTP_USER` (já identificado) e `SMTP_PASS` (segredo da caixa, nunca versionado);
 - `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL`.
 
 Credenciais nunca devem ser versionadas ou expostas ao navegador.
