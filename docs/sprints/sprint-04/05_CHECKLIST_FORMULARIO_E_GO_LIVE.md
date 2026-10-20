@@ -34,10 +34,11 @@
 - [x] verificar MX, SPF, DKIM e DMARC ativos no domínio;
 - [x] configurar localmente a senha da caixa para autenticação SMTP, sem registrá-la no repositório;
 - [x] validar em 19/10/2026 o envio real do endpoint local pelo SMTP da Hostinger (`201 Mensagem enviada`);
-- [ ] confirmar a entrega da mensagem de teste na caixa de entrada ou no spam;
+- [x] confirmar a entrega da mensagem de teste na caixa `contato@capisolutions.com`;
 - [ ] configurar as variáveis SMTP no ambiente de preview/produção; host, porta, segurança e usuário já estão definidos, faltando cadastrar `SMTP_PASS` como segredo;
 - [x] definir `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL` no exemplo de configuração;
-- [ ] testar entrega em Gmail, Outlook e no próprio domínio;
+- [x] testar entrega no próprio domínio;
+- [ ] testar entrega em Gmail e Outlook;
 - [ ] testar resposta ao remetente pelo cabeçalho `Reply-To`;
 - [ ] decidir prazo de retenção e rotina de exclusão das mensagens;
 - [ ] identificar o responsável pelo tratamento dos dados na Política de Privacidade.
