@@ -35,7 +35,7 @@
 - [x] configurar localmente a senha da caixa para autenticação SMTP, sem registrá-la no repositório;
 - [x] validar em 19/10/2026 o envio real do endpoint local pelo SMTP da Hostinger (`201 Mensagem enviada`);
 - [x] confirmar a entrega da mensagem de teste na caixa `contato@capisolutions.com`;
-- [ ] configurar as variáveis SMTP no ambiente de preview/produção; host, porta, segurança e usuário já estão definidos, faltando cadastrar `SMTP_PASS` como segredo;
+- [x] configurar as variáveis SMTP somente no ambiente de preview da Vercel, com `SMTP_PASS` armazenada como segredo;
 - [x] definir `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL` no exemplo de configuração;
 - [x] testar entrega no próprio domínio;
 - [ ] testar entrega em Gmail e Outlook;
@@ -64,10 +64,12 @@
 
 ## Entrega e go-live
 
-- [ ] publicar a branch e confirmar CI verde;
-- [ ] abrir PR para `main` após o aceite visual;
-- [ ] criar preview na Vercel sem substituir o legado;
-- [ ] executar teste real de envio no preview;
+- [x] publicar a branch `codex/sprint-04-nexo-formulario` no GitHub;
+- [ ] confirmar todos os checks automáticos da branch em verde;
+- [x] abrir o PR #1 para `main`, sem realizar merge;
+- [x] criar preview privado na Vercel, protegido por autenticação e sem substituir o legado;
+- [x] executar teste real de envio no preview e receber a resposta `Mensagem enviada`;
+- [ ] confirmar a chegada da mensagem enviada pelo preview na caixa de destino;
 - [ ] revisar SEO, Open Graph, dados estruturados e imagens finais;
 - [ ] revisar CSP, HTTPS, cache e demais headers no ambiente de hospedagem;
 - [ ] aprovar Política de Privacidade final;
