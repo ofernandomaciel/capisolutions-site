@@ -1,6 +1,6 @@
 # Sprint 04 — QA de pré-lançamento
 
-**Executado em:** 19/10/2026  
+**Executado em:** 19/10/2026, com medição complementar em 25/10/2026
 **Branch:** `codex/sprint-04-nexo-formulario`  
 **Escopo:** preview privado, sem integração à `main`
 
@@ -23,6 +23,7 @@ O site está tecnicamente pronto para a etapa de homologação humana no preview
 | Formulário | Aprovado | Validação, formato inválido, carga excessiva, honeypot, indisponibilidade SMTP e limite de tentativas cobertos pelo smoke test. |
 | Envio real | Aprovado anteriormente | Endpoint do preview respondeu “Mensagem enviada”; a confirmação da chegada desse último e-mail ainda é uma ação humana. |
 | Performance de imagens | Aprovado | Seis PNGs, totalizando 23,4 MB, substituídos por WebP totalizando 680 KB (redução aproximada de 97%). |
+| Lighthouse local | Aprovado com ressalvas | Medição móvel isolando o script injetado pelo antivírus: Performance 89, Acessibilidade 100, SEO 100, FCP 2,0 s, LCP 3,5 s, TBT 60 ms e CLS 0. Boas Práticas marcou 81 exclusivamente porque o endereço local usa HTTP; o preview usa HTTPS e HSTS. |
 | SEO técnico | Aprovado | Canonical por página, Open Graph, Twitter Card, imagem social, robots, sitemap e JSON-LD de Organização, Pessoa e Website. |
 | Política de Privacidade | Implementada | Controlador, finalidade, provedores, retenção, direitos, segurança e canal de contato definidos. Requer aprovação final do responsável antes do go-live. |
 
@@ -49,6 +50,7 @@ O site está tecnicamente pronto para a etapa de homologação humana no preview
 - metadados sociais e dados estruturados centralizados;
 - Política de Privacidade atualizada para a operação real com Vercel e Hostinger;
 - build fixado em webpack devido a uma falha do Turbopack no ambiente Windows, sem erro no código do projeto.
+- imagem principal marcada para preload e prioridade alta; o Lighthouse confirmou descoberta imediata, carregamento antecipado e `fetchpriority=high`.
 
 ## Pendências obrigatórias antes do go-live
 

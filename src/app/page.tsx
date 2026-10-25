@@ -28,7 +28,7 @@ export default function Home() {
               </div>
             </div>
             <div className="approved-hero__portrait" aria-hidden="true">
-              <Image src="/images/fernando-hero-approved.webp" alt="" fill priority sizes="(max-width: 760px) 56vw, 45vw" />
+              <Image src="/images/fernando-hero-approved.webp" alt="" fill preload fetchPriority="high" sizes="(max-width: 760px) 56vw, 45vw" />
               <blockquote>“Transformar complexidade em soluções possíveis é o que me move.”<cite>— Fernando Maciel</cite></blockquote>
               <p className="approved-hero__stack"><span />Tecnologia<br />Conteúdo<br />Comunicação<br />Pessoas</p>
             </div>
