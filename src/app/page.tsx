@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main className="approved-home">
+      <main className="approved-home" id="conteudo-principal">
         <section className="approved-hero" id="inicio">
           <div className="shell approved-hero__grid">
             <div className="approved-hero__copy">
@@ -28,7 +28,7 @@ export default function Home() {
               </div>
             </div>
             <div className="approved-hero__portrait" aria-hidden="true">
-              <Image src="/images/fernando-hero-approved.png" alt="" fill priority sizes="(max-width: 760px) 56vw, 45vw" />
+              <Image src="/images/fernando-hero-approved.webp" alt="" fill priority sizes="(max-width: 760px) 56vw, 45vw" />
               <blockquote>“Transformar complexidade em soluções possíveis é o que me move.”<cite>— Fernando Maciel</cite></blockquote>
               <p className="approved-hero__stack"><span />Tecnologia<br />Conteúdo<br />Comunicação<br />Pessoas</p>
             </div>
@@ -83,7 +83,7 @@ export default function Home() {
               <span className="approved-number">04</span>
               <div><p>Sobre</p><h2>Uma trajetória multidisciplinar com propósito.</h2><p className="about-strip__text">Sou Fernando Maciel. Atuo na interseção entre tecnologia, comunicação e conteúdo. Hoje, estou em transição para Engenharia de Dados e IA, sempre com o mesmo objetivo: transformar complexidade em soluções claras e humanas.</p><Link href="/sobre">Conheça minha história <ArrowUpRight /></Link></div>
             </div>
-            <Image src="/images/fernando-hero-approved.png" alt="Fernando Maciel" width={900} height={900} sizes="240px" />
+            <Image src="/images/fernando-hero-approved.webp" alt="Fernando Maciel" width={900} height={900} sizes="240px" />
             <blockquote>“Tecnologia só faz sentido quando aproxima pessoas.”</blockquote>
           </div>
         </section>
@@ -93,7 +93,7 @@ export default function Home() {
             <span className="approved-number">05</span>
             <div><p>Personagem da CapiSolutions</p><h2>O Nexo ajuda a tornar a tecnologia mais próxima.</h2><span>Ele acompanha a experiência do site e representa uma tecnologia clara, curiosa e humana — sem chat e sem coletar suas mensagens.</span></div>
             <Link className="approved-button approved-button--coral" href="/contato">Conte sobre seu projeto <ArrowUpRight /></Link>
-            <div className="nexo-band__character"><Image src="/images/nexo-approved.png" alt="Nexo, a capivara robô da CapiSolutions" fill sizes="340px" /><b>Oi!<br />Eu sou<br />o Nexo!</b></div>
+            <div className="nexo-band__character"><Image src="/images/nexo-approved.webp" alt="Nexo, a capivara robô da CapiSolutions" fill sizes="340px" /><b>Oi!<br />Eu sou<br />o Nexo!</b></div>
           </div>
         </section>
       </main>

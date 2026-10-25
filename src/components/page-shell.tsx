@@ -5,7 +5,7 @@ export function PageShell({ kicker, title, description, children }: { kicker: st
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="conteudo-principal">
         <header className="page-hero">
           <div className="shell page-hero__grid">
             <div>

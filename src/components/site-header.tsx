@@ -6,6 +6,7 @@ const nav = [["Soluções", "/#solucoes"], ["Conteúdo", "/#conteudo"], ["Sobre"
 export function SiteHeader() {
   return (
     <header className="site-header">
+      <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
       <div className="shell site-header__inner">
         <Link className="brand-word" href="/" aria-label="CapiSolutions — Início"><span>Capi</span>Solutions</Link>
         <nav className="site-nav" aria-label="Navegação principal">

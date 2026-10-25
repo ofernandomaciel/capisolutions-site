@@ -4,9 +4,13 @@ import { fileURLToPath } from "node:url";
 const port = 3021;
 const baseUrl = `http://127.0.0.1:${port}`;
 const nextCli = fileURLToPath(new URL("../node_modules/next/dist/bin/next", import.meta.url));
-const server = spawn(process.execPath, [nextCli, "start", "--hostname", "127.0.0.1", "--port", String(port)], {
-  env: process.env,
-  stdio: ["ignore", "pipe", "pipe"],
+const serverEnv = { ...process.env };
+for (const key of ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS", "CONTACT_FROM_EMAIL", "CONTACT_TO_EMAIL"]) {
+  serverEnv[key] = "";
+}
+const server = spawn(process.execPath, [nextCli, "dev", "--webpack", "--hostname", "127.0.0.1", "--port", String(port)], {
+  env: { ...serverEnv, HOSTNAME: "127.0.0.1", PORT: String(port) },
+  stdio: ["pipe", "pipe", "pipe"],
 });
 
 let serverOutput = "";
@@ -49,6 +53,7 @@ try {
     "/sobre",
     "/contato",
     "/privacidade",
+    "/opengraph-image",
     "/robots.txt",
     "/sitemap.xml",
   ];
@@ -71,8 +76,8 @@ try {
   }
 
   const sitemap = await expectStatus("/sitemap.xml");
-  for (const emptyRoute of ["/newsroom/artigos", "/newsroom/entrevistas"]) {
-    if (sitemap.includes(emptyRoute)) throw new Error(`Sitemap includes empty route: ${emptyRoute}`);
+  for (const excludedRoute of ["/newsroom/artigos", "/newsroom/entrevistas", "/privacidade"]) {
+    if (sitemap.includes(excludedRoute)) throw new Error(`Sitemap includes excluded route: ${excludedRoute}`);
   }
 
   for (const emptyRoute of ["/newsroom/artigos", "/newsroom/entrevistas"]) {
@@ -84,6 +89,33 @@ try {
 
   const contact = await expectStatus("/contato");
   if (!contact.includes("Formulário de contato")) throw new Error("Contact page is missing the email form");
+  if (!contact.includes("Não envie senhas, documentos ou dados sensíveis")) throw new Error("Contact page is missing the sensitive-data warning");
+
+  const htmlRoutes = publicRoutes.filter((route) => !route.endsWith(".txt") && !route.endsWith(".xml") && route !== "/opengraph-image");
+  for (const route of htmlRoutes) {
+    const page = await expectStatus(route);
+    const canonical = `https://capisolutions.com${route === "/" ? "" : route}`;
+    if (!page.includes(`rel="canonical" href="${canonical}"`)) throw new Error(`${route} is missing canonical ${canonical}`);
+  }
+
+  if (!home.includes("application/ld+json")) throw new Error("Home is missing structured data");
+  if (!home.includes("property=\"og:image\"") || !home.includes("name=\"twitter:card\"")) throw new Error("Home is missing social metadata");
+
+  const privacy = await expectStatus("/privacidade");
+  for (const requiredCopy of ["Fernando Maciel", "12 meses", "Vercel", "Hostinger"]) {
+    if (!privacy.includes(requiredCopy)) throw new Error(`Privacy page is missing: ${requiredCopy}`);
+  }
+  if (privacy.includes("Documento operacional provisório")) throw new Error("Privacy page still contains provisional copy");
+
+  const unsupportedContact = await fetch(`${baseUrl}/api/contact`, { method: "POST", headers: { "Content-Type": "text/plain" }, body: "{}" });
+  if (unsupportedContact.status !== 415) throw new Error(`Unsupported contact content returned ${unsupportedContact.status}; expected 415`);
+
+  const oversizedContact = await fetch(`${baseUrl}/api/contact`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: "x".repeat(21_000) }),
+  });
+  if (oversizedContact.status !== 413) throw new Error(`Oversized contact returned ${oversizedContact.status}; expected 413`);
 
   const invalidContact = await fetch(`${baseUrl}/api/contact`, {
     method: "POST",
@@ -115,7 +147,18 @@ try {
   const headers = await fetch(baseUrl);
   if (headers.headers.get("x-content-type-options") !== "nosniff") throw new Error("Security headers are missing");
 
-  console.log(`Smoke test passed for ${publicRoutes.length} public routes, contact validation, security headers and the 404 state.`);
+  const rateLimitStatuses = [];
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const response = await fetch(`${baseUrl}/api/contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: "A" }),
+    });
+    rateLimitStatuses.push(response.status);
+  }
+  if (rateLimitStatuses.at(-1) !== 429) throw new Error(`Rate limit did not activate: ${rateLimitStatuses.join(", ")}`);
+
+  console.log(`Smoke test passed for ${publicRoutes.length} public routes, metadata, privacy, contact states, security headers and the 404 state.`);
 } finally {
   server.kill("SIGTERM");
 }

@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Capi Newsroom", description: "Análises e conversas sobre inteligência artificial, dados, tecnologia e carreira." };
+export const metadata = pageMetadata({ title: "Capi Newsroom", description: "Análises e conversas sobre inteligência artificial, dados, tecnologia e carreira.", path: "/newsroom" });
 const categories = ["Inteligência Artificial", "Dados", "Tecnologia", "Carreira", "Negócios & Inovação"];
 
 export default function NewsroomPage() {

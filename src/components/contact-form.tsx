@@ -37,11 +37,11 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <form className="contact-form" onSubmit={handleSubmit} aria-busy={state === "sending"}>
       <div className="contact-form__heading">
         <p className="eyebrow eyebrow--dark">Formulário de contato</p>
         <h2>Conte um pouco sobre o seu projeto.</h2>
-        <p>Os campos marcados com * são obrigatórios.</p>
+        <p>Os campos marcados com * são obrigatórios. Não envie senhas, documentos ou dados sensíveis.</p>
       </div>
 
       <div className="contact-form__grid">

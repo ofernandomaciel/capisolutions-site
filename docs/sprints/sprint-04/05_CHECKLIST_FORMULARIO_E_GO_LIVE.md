@@ -40,19 +40,23 @@
 - [x] testar entrega no próprio domínio;
 - [ ] testar entrega em Gmail e Outlook;
 - [ ] testar resposta ao remetente pelo cabeçalho `Reply-To`;
-- [ ] decidir prazo de retenção e rotina de exclusão das mensagens;
-- [ ] identificar o responsável pelo tratamento dos dados na Política de Privacidade.
+- [x] definir prazo padrão de retenção em 12 meses para contatos sem relação comercial;
+- [x] identificar Fernando Maciel como responsável pelo tratamento dos dados na Política de Privacidade;
+- [ ] confirmar a rotina operacional de exclusão das mensagens após o prazo.
 
 ## QA antes do preview público
 
-- [ ] revisar visualmente o formulário em desktop e mobile;
-- [ ] testar teclado, foco, leitor de tela e mensagens de erro;
-- [ ] testar estados enviando, sucesso, validação, indisponibilidade e erro do provedor;
-- [ ] testar mensagens longas, caracteres especiais e quebras de linha;
-- [ ] testar abuso e confirmar se o limite em memória é suficiente para o ambiente de produção;
+- [x] revisar visualmente o formulário em Chrome desktop, tablet e mobile por emulação;
+- [x] testar teclado, foco, estrutura semântica e mensagens de erro;
+- [ ] testar com leitor de tela real (NVDA, VoiceOver ou TalkBack);
+- [x] testar estados enviando, sucesso, validação e indisponibilidade;
+- [x] testar limites de mensagem, payload e formato de conteúdo;
+- [x] testar abuso e ativação do limite em memória;
+- [ ] confirmar em aparelhos reais iPhone/Safari e Android/Chrome;
+- [ ] confirmar em Edge, Firefox e Safari desktop;
 - [ ] considerar rate limiting persistente ou proteção adicional se houver volume de spam;
-- [ ] confirmar que nenhum dado do formulário chega ao analytics ou aos logs;
-- [ ] executar lint, typecheck, build e smoke test após a configuração final.
+- [x] confirmar que o site atual não possui analytics e que o endpoint não registra o conteúdo do formulário;
+- [x] executar lint, typecheck, build e smoke test após a configuração final.
 
 ## Identidade e conteúdo
 
@@ -70,9 +74,11 @@
 - [x] criar preview privado na Vercel, protegido por autenticação e sem substituir o legado;
 - [x] executar teste real de envio no preview e receber a resposta `Mensagem enviada`;
 - [ ] confirmar a chegada da mensagem enviada pelo preview na caixa de destino;
-- [ ] revisar SEO, Open Graph, dados estruturados e imagens finais;
+- [x] revisar SEO, Open Graph, canonical, dados estruturados, robots e sitemap;
+- [x] otimizar as seis imagens PNG principais para WebP, reduzindo o conjunto de 23,4 MB para 680 KB;
 - [ ] revisar CSP, HTTPS, cache e demais headers no ambiente de hospedagem;
-- [ ] aprovar Política de Privacidade final;
+- [x] implementar a Política de Privacidade final para a operação atual;
+- [ ] obter aprovação formal do responsável para a Política de Privacidade;
 - [ ] documentar rollback para o site legado;
 - [ ] obter autorização explícita antes do merge e do go-live;
 - [ ] executar smoke test e teste de e-mail após a publicação.

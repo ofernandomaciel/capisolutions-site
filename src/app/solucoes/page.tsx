@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons";
 import { InteriorCta } from "@/components/interior-cta";
 import { PageShell } from "@/components/page-shell";
 import { solutionFronts } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Soluções", description: "Conheça as três frentes de atuação da CapiSolutions." };
+export const metadata = pageMetadata({ title: "Soluções", description: "Conheça as três frentes de atuação da CapiSolutions.", path: "/solucoes" });
 
 export default function SolutionsPage() {
   return (

@@ -5,13 +5,14 @@ import { ArrowUpRight } from "@/components/icons";
 import { InteriorCta } from "@/components/interior-cta";
 import { PageShell } from "@/components/page-shell";
 import { solutionPages, type SolutionSlug } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() { return Object.keys(solutionPages).map((slug) => ({ slug })); }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const page = solutionPages[slug as SolutionSlug];
-  return page ? { title: page.kicker, description: page.introduction } : {};
+  return page ? pageMetadata({ title: page.kicker, description: page.introduction, path: `/solucoes/${slug}` }) : {};
 }
 
 export default async function SolutionDetailPage({ params }: { params: Promise<{ slug: string }> }) {
