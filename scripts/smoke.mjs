@@ -75,6 +75,14 @@ try {
     if (home.includes(copy)) throw new Error(`Home still contains unapproved copy: ${copy}`);
   }
 
+  for (const socialUrl of [
+    "https://www.instagram.com/ofernandomaciel/",
+    "https://www.linkedin.com/in/ofernandomaciel/",
+    "https://github.com/ofernandomaciel",
+  ]) {
+    if (!home.includes(socialUrl)) throw new Error(`Home is missing social profile: ${socialUrl}`);
+  }
+
   const sitemap = await expectStatus("/sitemap.xml");
   for (const excludedRoute of ["/newsroom/artigos", "/newsroom/entrevistas", "/privacidade"]) {
     if (sitemap.includes(excludedRoute)) throw new Error(`Sitemap includes excluded route: ${excludedRoute}`);

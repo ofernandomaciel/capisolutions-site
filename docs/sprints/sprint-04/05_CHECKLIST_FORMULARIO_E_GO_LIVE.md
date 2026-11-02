@@ -1,6 +1,6 @@
 # Sprint 04 — Checklist do formulário e próximos passos
 
-**Atualizada em:** 19/10/2026  
+**Atualizada em:** 02/11/2026
 **Branch:** `codex/sprint-04-nexo-formulario`
 
 ## Implementado nesta etapa
@@ -38,11 +38,12 @@
 - [x] configurar as variáveis SMTP somente no ambiente de preview da Vercel, com `SMTP_PASS` armazenada como segredo;
 - [x] definir `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL` no exemplo de configuração;
 - [x] testar entrega no próprio domínio;
-- [ ] testar entrega em Gmail e Outlook;
-- [ ] testar resposta ao remetente pelo cabeçalho `Reply-To`;
+- [x] testar entrega e resposta usando Gmail;
+- [ ] testar entrega em Outlook (opcional para o lançamento);
+- [x] testar resposta ao remetente pelo cabeçalho `Reply-To`;
 - [x] definir prazo padrão de retenção em 12 meses para contatos sem relação comercial;
 - [x] identificar Fernando Maciel como responsável pelo tratamento dos dados na Política de Privacidade;
-- [ ] confirmar a rotina operacional de exclusão das mensagens após o prazo.
+- [x] confirmar a rotina operacional de exclusão das mensagens após o prazo.
 
 ## QA antes do preview público
 
@@ -60,11 +61,11 @@
 
 ## Identidade e conteúdo
 
-- [ ] aprovar as novas frases do Nexo na Home e na página Contato;
-- [ ] aprovar o equilíbrio visual entre Nexo e Fernando;
-- [ ] confirmar imagens finais, direitos de uso e textos alternativos;
-- [ ] revisar textos finais das páginas públicas;
-- [ ] confirmar ou remover os símbolos sociais ainda sem links reais.
+- [x] aprovar as novas frases do Nexo na Home e na página Contato;
+- [x] aprovar o Nexo e o equilíbrio visual atual para o lançamento;
+- [x] aprovar as imagens atuais para o lançamento; novas fotos profissionais ficam para uma atualização posterior;
+- [x] revisar e aprovar os textos finais das páginas públicas;
+- [x] vincular LinkedIn, Instagram e GitHub pessoais de Fernando Maciel no rodapé.
 
 ## Entrega e go-live
 
@@ -73,12 +74,12 @@
 - [x] abrir o PR #1 para `main`, sem realizar merge;
 - [x] criar preview privado na Vercel, protegido por autenticação e sem substituir o legado;
 - [x] executar teste real de envio no preview e receber a resposta `Mensagem enviada`;
-- [ ] confirmar a chegada da mensagem enviada pelo preview na caixa de destino;
+- [x] confirmar a chegada da mensagem enviada pelo preview na caixa de destino;
 - [x] revisar SEO, Open Graph, canonical, dados estruturados, robots e sitemap;
 - [x] otimizar as seis imagens PNG principais para WebP, reduzindo o conjunto de 23,4 MB para 680 KB;
 - [ ] revisar CSP, HTTPS, cache e demais headers no ambiente de hospedagem;
 - [x] implementar a Política de Privacidade final para a operação atual;
-- [ ] obter aprovação formal do responsável para a Política de Privacidade;
+- [x] obter aprovação formal do responsável para a Política de Privacidade;
 - [ ] documentar rollback para o site legado;
 - [ ] obter autorização explícita antes do merge e do go-live;
 - [ ] executar smoke test e teste de e-mail após a publicação.
