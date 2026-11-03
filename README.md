@@ -1,58 +1,76 @@
-# CapiSolutions — Site Institucional
+# CapiSolutions — nova experiência digital
 
-Site institucional da **CapiSolutions**, empresa de tecnologia focada em soluções com propósito. Desenvolvido com design minimalista inspirado na estética Apple.
+Fundação da nova CapiSolutions em Next.js, criada na Sprint 03 após a aprovação dos Gates 04, 05 e 06.
 
-🌐 **[capisolutions.com](https://www.capisolutions.com)**
+## Stack
 
----
+- Next.js 16 com App Router;
+- React 19 e TypeScript;
+- Tailwind CSS 4 no pipeline de build;
+- ESLint;
+- Sanity e Vercel planejados para os próximos blocos.
 
-## 🚀 Tecnologias Utilizadas
+## Executar localmente
 
-| Tecnologia | Descrição |
-|---|---|
-| ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) | Estrutura e marcação das páginas |
-| ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) | Estilização via CDN (utility-first CSS) |
-| ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) | Interatividade e animações |
-| ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white) | Envio de formulário de contato |
-
----
-
-## 📁 Estrutura do Projeto
-
-```
-site-capisolutions/
-├── index.html          # Página principal
-├── send_mail.php       # Backend para envio de e-mail via formulário
-├── README.md
-└── assets/
-    └── images/         # Imagens e avatares do site
-        ├── logo.png
-        ├── avatar-waving.png
-        ├── avatar-thinking.png
-        └── avatar-pointing.png
+```bash
+pnpm install
+pnpm dev
 ```
 
----
+Abra `http://localhost:3000`.
 
-## 💻 Como Rodar Localmente
+## Verificações
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/ofernandomaciel/capisolutions-site.git
-   ```
+```bash
+pnpm lint
+pnpm typecheck
+pnpm build
+```
 
-2. Acesse a pasta do projeto:
-   ```bash
-   cd capisolutions-site
-   ```
+Ou execute tudo com `pnpm check`.
 
-3. Abra o arquivo `index.html` no seu navegador — ou use uma extensão como **Live Server** no VS Code para um servidor local.
+## Estado atual
 
-> **Nota:** O `send_mail.php` requer um servidor com PHP para funcionar (ex: XAMPP, WAMP ou hospedagem web).
+- fundação visual e rotas institucionais;
+- Home responsiva;
+- Newsroom em estado editorial inicial;
+- Nexo como personagem principal da identidade, sem chat, API ou armazenamento;
+- formulário de contato com envio SMTP pelo servidor;
+- nenhuma integração externa ou publicação de produção.
 
----
+## Formulário de contato
 
-## ✉️ Contato
+Copie `.env.example` para `.env.local` e configure a senha SMTP da caixa `contato@capisolutions.com`. O projeto já usa o servidor oficial da Hostinger (`smtp.hostinger.com`, porta `465`, SSL/TLS). O formulário permanece visível sem a senha, mas o servidor responde com indisponibilidade temporária e não tenta enviar mensagens.
 
-Tem alguma dúvida ou quer trabalhar com a gente?  
-Acesse [capisolutions.com](https://www.capisolutions.com) e entre em contato.
+Variáveis necessárias:
+
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` e `SMTP_AUTH` (preenchidos para a Hostinger no exemplo);
+- `SMTP_USER` (já identificado) e `SMTP_PASS` (segredo da caixa, nunca versionado);
+- `CONTACT_FROM_EMAIL` e `CONTACT_TO_EMAIL`.
+
+Credenciais nunca devem ser versionadas ou expostas ao navegador.
+
+## Teste local com Docker
+
+O ambiente Docker executa o site e o Mailpit, que captura e-mails localmente sem entregá-los a destinatários externos:
+
+```bash
+docker compose up --build
+```
+
+- site: `http://localhost:3000`;
+- caixa de e-mail local: `http://localhost:8025`.
+
+Com os containers em execução, valide o envio completo com:
+
+```bash
+pnpm test:email:docker
+```
+
+O arquivo `compose.yaml` desativa autenticação apenas na rede Docker local. Em preview e produção, mantenha `SMTP_AUTH=true` e use uma credencial exclusiva configurada no ambiente de hospedagem.
+
+O site anterior foi preservado em `legacy/` e também pela tag Git `legacy-2026-09-10`.
+
+## Documentação e decisões
+
+Os Gates, registros das sprints, referências visuais e auditorias estão versionados em [`docs/`](docs/README.md). Essa pasta é a fonte canônica do projeto; cópias externas e caches são apenas referências de origem.
