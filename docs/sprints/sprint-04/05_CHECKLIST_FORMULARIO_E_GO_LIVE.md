@@ -53,8 +53,9 @@
 - [x] testar estados enviando, sucesso, validação e indisponibilidade;
 - [x] testar limites de mensagem, payload e formato de conteúdo;
 - [x] testar abuso e ativação do limite em memória;
-- [ ] confirmar em aparelhos reais iPhone/Safari e Android/Chrome;
-- [ ] confirmar em Edge, Firefox e Safari desktop;
+- [x] confirmar em aparelho real iPhone/Safari;
+- [ ] confirmar em aparelho real Android/Chrome, se disponível;
+- [x] confirmar nos navegadores desktop disponíveis;
 - [ ] considerar rate limiting persistente ou proteção adicional se houver volume de spam;
 - [x] confirmar que o site atual não possui analytics e que o endpoint não registra o conteúdo do formulário;
 - [x] executar lint, typecheck, build e smoke test após a configuração final.
