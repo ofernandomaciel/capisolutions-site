@@ -96,15 +96,11 @@ try {
   }
 
   const sitemap = await expectStatus("/sitemap.xml");
-  for (const excludedRoute of ["/newsroom/artigos", "/newsroom/entrevistas", "/privacidade"]) {
-    if (sitemap.includes(excludedRoute)) throw new Error(`Sitemap includes excluded route: ${excludedRoute}`);
+  for (const includedRoute of ["/newsroom/artigos", "/newsroom/entrevistas"]) {
+    if (!sitemap.includes(includedRoute)) throw new Error(`Sitemap is missing route: ${includedRoute}`);
   }
-
-  for (const emptyRoute of ["/newsroom/artigos", "/newsroom/entrevistas"]) {
-    const page = await expectStatus(emptyRoute);
-    if (!/<meta name="robots" content="noindex, follow"/i.test(page)) {
-      throw new Error(`${emptyRoute} is missing the expected noindex directive`);
-    }
+  for (const excludedRoute of ["/privacidade"]) {
+    if (sitemap.includes(excludedRoute)) throw new Error(`Sitemap includes excluded route: ${excludedRoute}`);
   }
 
   const contact = await expectStatus("/contato");

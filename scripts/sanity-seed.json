@@ -1,0 +1,8 @@
+[
+  {"_id":"category-inteligencia-artificial","_type":"category","title":"Inteligência Artificial","slug":{"_type":"slug","current":"inteligencia-artificial"},"description":"Análises, aplicações e impactos da inteligência artificial."},
+  {"_id":"category-dados","_type":"category","title":"Dados","slug":{"_type":"slug","current":"dados"},"description":"Engenharia, análise, governança e cultura orientada por dados."},
+  {"_id":"category-tecnologia","_type":"category","title":"Tecnologia","slug":{"_type":"slug","current":"tecnologia"},"description":"Produtos, arquitetura e transformações no ecossistema de tecnologia."},
+  {"_id":"category-carreira","_type":"category","title":"Carreira","slug":{"_type":"slug","current":"carreira"},"description":"Trajetórias, aprendizado e desenvolvimento profissional."},
+  {"_id":"category-negocios-inovacao","_type":"category","title":"Negócios & Inovação","slug":{"_type":"slug","current":"negocios-inovacao"},"description":"Estratégia, inovação e criação de valor com tecnologia."},
+  {"_id":"person-fernando-maciel","_type":"person","name":"Fernando Maciel","slug":{"_type":"slug","current":"fernando-maciel"},"role":"Fundador da CapiSolutions","linkedin":"https://www.linkedin.com/in/ofernandomaciel/","instagram":"https://www.instagram.com/ofernandomaciel/","github":"https://github.com/ofernandomaciel"}
+]
