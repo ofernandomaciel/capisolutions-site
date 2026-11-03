@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { GitHubIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from "@/components/icons";
+
+const socialLinks = [
+  { href: "https://www.linkedin.com/in/ofernandomaciel/", label: "Fernando Maciel no LinkedIn", icon: LinkedInIcon },
+  { href: "https://www.instagram.com/ofernandomaciel/", label: "Fernando Maciel no Instagram", icon: InstagramIcon },
+  { href: "https://github.com/ofernandomaciel", label: "Fernando Maciel no GitHub", icon: GitHubIcon },
+];
+
+const whatsappUrl = "https://wa.me/5548991880399?text=Ol%C3%A1%21%20Conheci%20a%20CapiSolutions%20pelo%20site%20e%20gostaria%20de%20conversar.";
 
 export const metadata: Metadata = {
   title: "Em construção",
@@ -24,7 +33,12 @@ export default function MaintenancePage() {
               A CapiSolutions está preparando sua nova experiência editorial, com artigos,
               entrevistas e conteúdo sobre tecnologia, dados e inteligência artificial.
             </p>
-            <a href="mailto:contato@capisolutions.com">contato@capisolutions.com</a>
+            <div className="maintenance-page__actions">
+              <a href="mailto:contato@capisolutions.com">Enviar e-mail</a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <WhatsAppIcon /> Conversar no WhatsApp
+              </a>
+            </div>
           </div>
           <div className="maintenance-page__nexo">
             <Image
@@ -39,7 +53,16 @@ export default function MaintenancePage() {
         </div>
         <footer>
           <span>© {new Date().getFullYear()} CapiSolutions</span>
-          <span>Tecnologia com propósito.</span>
+          <nav aria-label="Redes sociais e canais da CapiSolutions">
+            {socialLinks.map(({ href, label, icon: Icon }) => (
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${label} — abre em nova aba`}>
+                <Icon />
+              </a>
+            ))}
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="CapiSolutions no WhatsApp — abre em nova aba">
+              <WhatsAppIcon />
+            </a>
+          </nav>
         </footer>
       </section>
     </main>

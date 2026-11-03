@@ -66,6 +66,14 @@ try {
   const maintenance = await expectStatus("/em-construcao");
   if (!maintenance.includes("Voltamos em breve")) throw new Error("Maintenance page copy is missing");
   if (!maintenance.includes('content="noindex, nofollow, noarchive"')) throw new Error("Maintenance page must be noindex");
+  for (const contactUrl of [
+    "https://www.instagram.com/ofernandomaciel/",
+    "https://www.linkedin.com/in/ofernandomaciel/",
+    "https://github.com/ofernandomaciel",
+    "https://wa.me/5548991880399",
+  ]) {
+    if (!maintenance.includes(contactUrl)) throw new Error(`Maintenance page is missing contact link: ${contactUrl}`);
+  }
   const forbiddenCopy = [
     "O que realmente muda com a IA generativa",
     "Thanássius Veloso",
