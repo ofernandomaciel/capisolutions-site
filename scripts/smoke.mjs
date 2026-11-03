@@ -53,6 +53,7 @@ try {
     "/sobre",
     "/contato",
     "/privacidade",
+    "/em-construcao",
     "/opengraph-image",
     "/robots.txt",
     "/sitemap.xml",
@@ -62,6 +63,9 @@ try {
   await expectStatus("/rota-inexistente", 404);
 
   const home = await expectStatus("/");
+  const maintenance = await expectStatus("/em-construcao");
+  if (!maintenance.includes("Voltamos em breve")) throw new Error("Maintenance page copy is missing");
+  if (!maintenance.includes('content="noindex, nofollow, noarchive"')) throw new Error("Maintenance page must be noindex");
   const forbiddenCopy = [
     "O que realmente muda com a IA generativa",
     "Thanássius Veloso",
@@ -102,7 +106,9 @@ try {
   const htmlRoutes = publicRoutes.filter((route) => !route.endsWith(".txt") && !route.endsWith(".xml") && route !== "/opengraph-image");
   for (const route of htmlRoutes) {
     const page = await expectStatus(route);
-    const canonical = `https://capisolutions.com${route === "/" ? "" : route}`;
+    const canonical = route === "/" || route === "/em-construcao"
+      ? "https://capisolutions.com"
+      : `https://capisolutions.com${route}`;
     if (!page.includes(`rel="canonical" href="${canonical}"`)) throw new Error(`${route} is missing canonical ${canonical}`);
   }
 
