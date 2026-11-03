@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
+  if (process.env.MAINTENANCE_MODE === "true") return [];
+
   const routes = ["", "/solucoes", "/solucoes/tecnologia-produto", "/solucoes/conteudo-conhecimento", "/solucoes/linguagem-comunicacao", "/newsroom", "/sobre", "/contato"];
   return routes.map((route) => ({ url: `https://capisolutions.com${route}`, lastModified: new Date(), changeFrequency: route.startsWith("/newsroom") ? "weekly" : "monthly", priority: route === "" ? 1 : .7 }));
 }
